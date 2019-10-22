@@ -1,15 +1,6 @@
 package com.example.mvp.model
 
-class UserModel(val userName : String, val passWd : String) : IUser {
-
-//    val userName : String
-//    val passWd : String
-//
-//    init {
-//        userName = ""
-//        passWd = ""
-//    }
-
+class UserModel(private val userName: String, private val passWd: String) : IUser.Model {
 
     override fun getName(): String {
         return userName
@@ -19,10 +10,9 @@ class UserModel(val userName : String, val passWd : String) : IUser {
         return passWd
     }
 
-    override fun checkUserValidity(name: String, passwd: String): Int {
-        return if (name != getName() || passwd != getPassWord()) {
+    override fun checkUserValidity(name: String, pw: String): Int {
+        return if (name != getName() || pw != getPassWord()) {
             -1
         } else 0
     }
-
 }

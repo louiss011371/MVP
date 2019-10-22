@@ -2,17 +2,23 @@ package com.example.mvp.model
 
 interface IUser {
 
-    fun getName() : String
+    interface Model {
+        fun getName(): String
+        fun getPassWord(): String
+        fun checkUserValidity(name: String, pw: String): Int
+    }
 
-    fun getPassWord() : String
+    interface Presenter {
+        fun clear()
+        fun doLogin(name: String, pw: String)
+        fun setProgressBarVisibility(visibility: Int)
+    }
 
-    fun checkUserValidity(name: String, passWord: String) : Int
-
-//    interface Presenter {
-//        fun clear()
-//        fun doLogin(name: String, passwd: String)
-//        fun setProgressBarVisiblity(visiblity: Int)
-//    }
+    interface LoginView {
+        fun onClearText()
+        fun onLoginResult(result: Boolean, code: Int)
+        fun onSetProgressBarVisibility(visibility: Int)
+    }
 
 
 }
